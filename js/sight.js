@@ -16,8 +16,8 @@ class SVGElement {
   }
 
   append(element) {
-    var parent = (typeof element == "string") ? document.querySelector(element) : element.node;
-    parent.apppendChild(this.node);
+    var parent = (typeof element === "string") ? document.querySelector(element) : element.node;
+    parent.appendChild(this.node);
     return this;
   }
 }
