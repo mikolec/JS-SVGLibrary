@@ -1,0 +1,32 @@
+class SVGElement {
+  constructor(type) {
+    this.type = type;
+    this.namespace = "http://www.w3.org/2000/svg";
+    this.node = document.createElementNS(this.namespace, this.type);
+  }
+
+  attr(attrs) {
+    for (let [key, value] of Object.entries(attrs)) {
+      // console.log(`${key}: ${value}`);
+      this.node.setAttributeNS(null, key, value);
+    }
+
+    return this;
+  }
+
+  append(element) {
+    var parent = (typeof element == "string") ? document.querySelector(element) : element.node;
+    parent.apppendChild(this.node);
+    return this;
+  }
+}
+
+class Sight {
+  constructor(selector, width, height) {
+    this.svg = new SVGElement("svg").attr({viewbox:`0 0 ${width} ${height}`}).append(selector);
+  }
+  draw(type, attrs) {
+    return new SVGElement(type).attr(attrs).append(this.svg);
+  }
+  
+}
