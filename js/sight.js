@@ -3,6 +3,7 @@ class SVGElement {
     this.type = type;
     this.namespace = "http://www.w3.org/2000/svg";
     this.node = document.createElementNS(this.namespace, this.type);
+    return this;
   }
 
   attr(attrs) {
@@ -28,5 +29,5 @@ class Sight {
   draw(type, attrs) {
     return new SVGElement(type).attr(attrs).append(this.svg);
   }
-  
+
 }
